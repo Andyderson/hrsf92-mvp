@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 
-var SRC_DIR = path.join(__dirname, '/client');
-var DIST_DIR = path.join(__dirname, '/public');
+const SRC_DIR = path.join(__dirname, '/client');
+const DIST_DIR = path.join(__dirname, '/public');
 
 module.exports = {
     plugins: [
