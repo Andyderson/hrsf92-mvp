@@ -15,14 +15,30 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 
 app.get('/results', (req, res) => {
     let query = req.query.query;
-    mongodb.Allergy.find({'name': query}, (error, data) => {
+    mongodb.Allergy.find({'name': {'$regex': query, '$options': 'i'}}, (error, data) => {
         if (error) {
-            console.log('Express Mongo Get Error', error);
+            console.log('Express Result Get Error', error);
         } else {
-            console.log('Express Mongo Get Success', data);
+            console.log('Express Result Get Success', data);
             res.send(data);
         }
     });
+});
+
+app.get('/description', (req, res) => {
+    let query = req.query.query;
+    mongodb.Allergy.find({'description': {'$regex': query, '$options': 'i'}}, (error, data) => {
+        if (error) {
+            console.log('Express Description Get Error', error);
+        } else {
+            console.log('Express Description Get Success', data);
+            res.send(data);
+        }
+    });
+});
+
+app.post('/results', (req, res) => {
+    
 });
 
 app.listen(port, () => {

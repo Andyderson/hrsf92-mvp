@@ -17,13 +17,15 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Aversion
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > An application for those who wish to learn more about their allergies in a quick and concise way!
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > This application is here to aid your search for information on your allergy! Simply type in keywords about your allergy or symptom and we will return information related/containing your keywords. The report returned will include descriptions and symptoms related to your search as well as medications to take and scenarios to avoid!
+
+  Choose to save allergies that apply to you and present the list to your doctor!
 
 ## Problem ##
   > Describe the problem your product solves.

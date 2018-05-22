@@ -4,21 +4,20 @@ import axios from 'axios';
 
 import Input from './Input.jsx';
 import Results from './Results.jsx';
+import Save from './Save.jsx';
 import '../../public/style.css';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            description: [],
+            results: [],
+            savedResults: [],
         };  
+        this.saveAllergy = this.saveAllergy.bind(this);
         this.fetchResults = this.fetchResults.bind(this);
+        this.fetchDescription = this.fetchDescription.bind(this);
     };
-
-    componentDidMount() {
-
-    }
 
     fetchResults (e) {
         if (e.key === 'Enter') {
@@ -26,11 +25,10 @@ class App extends React.Component {
                 query: e.target.value
             }})
             .then((res) => {
-                console.log('fetchResults Success', res.data[0])
+                console.log('fetchResults Success', res);
                 this.setState({
-                    name: res.data[0].name,
-                    description: res.data[0].description,
-                });
+                    results: res.data,
+                })
             })
             .catch((error) => {
                 if (error) {
@@ -40,21 +38,56 @@ class App extends React.Component {
         }
     }
 
+    fetchDescription (e) {
+        if (e.key === 'Enter') {
+            axios.get(`${BASE_URL}/description`, {params: {
+                query: e.target.value
+            }})
+            .then((res) => {
+                console.log('fetchDescription Success', res);
+                this.setState({
+                    results: res.data,
+                })
+            })
+            .catch((error) => {
+                if (error) {
+                    console.log('fetchDescription error', error);
+                }
+            })
+        }
+    }
+
+    saveAllergy (name) {
+        const saved = this.state.savedResults.push(name);
+        this.setState({
+            savedResults: this.state.savedResults,
+        })
+    }
+
     render () {
         return (
             <div>
-                <img src="https://thecreatorwritings.files.wordpress.com/2015/08/mixing-clarity.jpg?" className="bannerPhoto"/>
-                <div className="title"> - Aversion - </div>
-
-                <div className="input">
-                    <h3>Search Your Allergy!</h3>
-                    <Input fetchResults={this.fetchResults}/>
+                <div className="pictureContainer">
+                    <div className="title">Aversion</div>
+                    <img src="https://www.800beachme.com/images/headerimages/2%20empty%20beach%20chairs%20-%20banner.jpg" className="bannerPhoto"/>
+                    <div className="centered">Welcome to Aversion, the handy guide to your allergies!</div>
                 </div>
 
-                <div className="result">
-                    <h3>Check out your results below!</h3>
-                    <Results name={this.state.name} description={this.state.description}/>
+                <div className="inputContainer">
+                    <h3>Search for keywords about your allergy!</h3>
+                    <Input fetchResults={this.fetchResults} fetchDescription={this.fetchDescription}/>
                 </div>
+
+                <div className="saveContainer">
+                    <h3>Your saved allergies:</h3>
+                    <Save savedResults={this.state.savedResults}/>
+                </div>
+
+                <div className="resultContainer">
+                    <div className="resultCheck">Check out your results below:</div>
+                    <Results results={this.state.results} saveAllergy={this.saveAllergy}/>
+                </div>
+
             </div>
         );
     }    

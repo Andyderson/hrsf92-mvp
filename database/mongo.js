@@ -8,6 +8,7 @@ const allergySchema = mongoose.Schema({
     id: { type: Number, require: true, unique: true },
     name: String,
     description: String,
+    url: String,
 })
 
 const Allergy = mongoose.model('Allergy', allergySchema);
