@@ -13,7 +13,7 @@ const Results = (props) => (
                             <br></br>
                             <a className="resultsDescription"> Description:</a> {(result).description}
                             <br></br>
-                            <i className="saveResults" onClick={() => props.saveAllergy((result).name)}>Save Result</i>
+                            <div className="saveResults" onClick={() => props.saveAllergy((result).name)}>Save Result</div>
                         </td>
                     </tr>        
                 ))}
