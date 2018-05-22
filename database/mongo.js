@@ -5,11 +5,11 @@ mongoose.connect('mongodb://localhost/Aversion');
 const db = mongoose.connection;
 
 const allergySchema = mongoose.Schema({
-    id: { type: Number, require: true, unique: true },
-    name: String,
-    description: String,
-    url: String,
-})
+  id: { type: Number, require: true, unique: true },
+  name: String,
+  description: String,
+  url: String,
+});
 
 const Allergy = mongoose.model('Allergy', allergySchema);
 
