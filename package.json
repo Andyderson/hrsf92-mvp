@@ -1,7 +1,7 @@
 {
-  "name": "MVP",
+  "name": "Aversion",
   "version": "1.0.0",
-  "description": "Anderson Tsang's MVP Project",
+  "description": "Anderson Tsang's Allergy Database Project",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
